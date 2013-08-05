@@ -1,0 +1,53 @@
+\documentclass{scrartcl}
+\usepackage{import}
+\usepackage{tikz}
+
+\import{../theme/}{trek-shapes.tex}
+
+\begin{document}
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw (0,0) node
+        [trek cursor,
+         trek/cursor/height=2cm,
+         trek/cursor/width=5cm,
+         fill=black!10,
+         thick] {};
+      \draw [|<->|] (-5mm,0) -- (-5mm,2cm) node [midway,left] {height};
+      \draw [|<->|] (0mm,-5mm) -- (5cm,-5mm) node [midway,below] {width};
+      \draw (0,0) circle (1mm);
+    \end{tikzpicture}
+    \caption{Shape: ``trek cursor''.}
+    \label{fig:shape-trek-cursor}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw (0,0) node
+        [trek elbow,
+         trek/elbow/width=50mm,
+         trek/elbow/height=20mm,
+         trek/elbow/bar height=10mm,
+         trek/elbow/sidebar width=20mm,
+         trek/elbow/outer radius=10mm,
+         trek/elbow/inner radius=5mm,
+         fill=black!10,
+         thick] {};
+       \draw (0,0) circle (1mm);
+       \draw [|<->|] (5mm,0) -- (5mm,10mm) node [midway,right] {bar height};
+       \draw [|<->|] (-55mm,-10mm) -- (-55mm,10mm) node [midway,left] {height};
+       \draw [|<->|] (-50mm,-15mm) -- (-30mm,-15mm) node [midway,below] {sidebar width};
+       \draw [|<->|] (-50mm,-24mm) -- (0mm,-24mm) node [midway,below] {width};
+       \draw (-28mm,-1mm) node [anchor=north west] {inner radius};
+       \draw (-50mm,11mm) node [anchor=south west] {outer radius};
+     \end{tikzpicture}
+    \caption{Shape: ``trek elbow''.}
+    \label{fig:shape-trek-elbow}
+  \end{center}
+\end{figure}
+
+\end{document}
