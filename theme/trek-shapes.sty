@@ -16,11 +16,10 @@
   \anchor{center}{\centerpoint}
   
   \backgroundpath{
-    \newlength\@radius
-    \@radius = \height
-    \divide \@radius by 2
+    \pgf@xc = \height
+    \divide \pgf@xc by 2
     \pgf@xa = \width
-    \advance \pgf@xa by -\@radius
+    \advance \pgf@xa by -\pgf@xc
     \pgf@ya = \height
     \pgf@xb = \pgf@xa
     \pgf@yb = 0mm
