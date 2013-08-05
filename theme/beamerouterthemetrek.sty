@@ -22,15 +22,17 @@
 \trek@elbow@inner@radius=3mm
 \trek@cursorwidth=5mm
 \trek@sidebar@width=16mm
-\trek@left@footline@elbow@width=20mm
+\trek@left@footline@elbow@width=25mm
 
 % Derived dimensions
 \newdimen\trek@full@sidebar@width
 \trek@full@sidebar@width=\trek@sidebar@width
 \advance \trek@full@sidebar@width by \trek@margin
-\advance \trek@full@sidebar@width by \trek@margin
+%\advance \trek@full@sidebar@width by \trek@margin
 
 \setbeamersize{sidebar width left=\the\trek@full@sidebar@width}
+\setbeamersize{text margin left=\the\trek@margin}
+\setbeamersize{text margin right=\the\trek@margin}
 
 \defbeamertemplate*{headline}{trek theme}{}
 
@@ -50,33 +52,34 @@
   \frametitle@height=\trek@elbow@height%
   \advance \frametitle@height by \trek@margin%
   % Origin of the "cursor" (right-most knobbly thing)
-  \newdimen\cursor@x
-  \newdimen\cursor@y
-  \cursor@x=\paperwidth
-  \advance \cursor@x by -\the\trek@margin
-  \advance \cursor@x by -\the\trek@cursorwidth
-  \cursor@y=\trek@elbow@height
-  \advance \cursor@y by -\the\@titletextheight
+  \newdimen\cursor@x%
+  \newdimen\cursor@y%
+  \cursor@x=\paperwidth%
+  \advance \cursor@x by -\the\trek@margin%
+  \advance \cursor@x by -\the\trek@cursorwidth%
+  \cursor@y=\trek@elbow@height%
+  \advance \cursor@y by -\the\@titletextheight%
   % Origin of the title (center of baseline)
-  \newdimen\title@x
-  \newdimen\title@y
-  \title@x=-\the\@titletextwidth
-  \divide \title@x by 2
-  \advance \title@x by \the\cursor@x
-  \advance \title@x by -\the\trek@titlegap
-  \title@y=\cursor@y
+  \newdimen\title@x%
+  \newdimen\title@y%
+  \title@x=-\the\@titletextwidth%
+  \divide \title@x by 2%
+  \advance \title@x by \the\cursor@x%
+  \advance \title@x by -\the\trek@titlegap%
+  \title@y=\cursor@y%
   % Origin and width of the "elbow"
-  \newdimen\elbow@x
-  \newdimen\elbow@y
-  \elbow@x=-\the\@titletextwidth
-  \divide \elbow@x by 2
-  \advance \elbow@x by \title@x
-  \advance \elbow@x by -\the\trek@titlegap
-  \elbow@y=\cursor@y
-  \newdimen\elbow@width
-  \elbow@width=\the\elbow@x
-  \advance \elbow@width by -\the\trek@margin
+  \newdimen\elbow@x%
+  \newdimen\elbow@y%
+  \elbow@x=-\the\@titletextwidth%
+  \divide \elbow@x by 2%
+  \advance \elbow@x by \title@x%
+  \advance \elbow@x by -\the\trek@titlegap%
+  \elbow@y=\cursor@y%
+  \newdimen\elbow@width%
+  \elbow@width=\the\elbow@x%
+  \advance \elbow@width by -\the\trek@margin%
   % Typeset the title
+  \vspace{-1.2pt}%
   \leavevmode%
   \hskip-\the\trek@full@sidebar@width% skip horizontally back across the sidebar width
   \hbox{%
@@ -116,49 +119,49 @@
   \setbox0=\hbox{\usebeamerfont{title in head/foot}\insertshorttitle}%
   \@footertextwidth=\wd0%
   \setbox1=\hbox{\usebeamerfont{title in head/foot}ML8}%
-  \@footertextheight\ht0%
+  \@footertextheight\ht1%
   % Height of entire footer region
-  \newdimen\footline@height
-  \footline@height=\the\trek@elbow@height
-  \advance\footline@height by \the\trek@margin
+  \newdimen\footline@height%
+  \footline@height=\the\trek@elbow@height%
+  \advance\footline@height by \the\trek@margin%
   % Position and dimensions of elbow
-  \newdimen\elbow@x
-  \newdimen\elbow@y
-  \newdimen\elbow@height
-  \elbow@x = \the\trek@left@footline@elbow@width
-  \advance \elbow@x by \the\trek@margin
-  \elbow@y = \the\trek@margin
-  \advance \elbow@y by \the\@footertextheight
-  \elbow@height = \the\footline@height
-  \advance \elbow@height by -\the\trek@margin
+  \newdimen\elbow@x%
+  \newdimen\elbow@y%
+  \newdimen\elbow@height%
+  \elbow@x = \the\trek@left@footline@elbow@width%
+  \advance \elbow@x by \the\trek@margin%
+  \elbow@y = \the\trek@margin%
+  \advance \elbow@y by \the\@footertextheight%
+  \elbow@height = \the\footline@height%
+  \advance \elbow@height by -\the\trek@margin%
   % Position of title
-  \newdimen\half@title@width
-  \newdimen\title@x
-  \newdimen\title@y
-  \half@title@width=\@footertextwidth
-  \divide \half@title@width by 2
-  \title@x = \elbow@x
-  \advance \title@x by \the\trek@titlegap
-  \title@y = \elbow@y
-  \advance \title@y by -\the\@footertextheight
+  \newdimen\half@title@width%
+  \newdimen\title@x%
+  \newdimen\title@y%
+  \half@title@width=\@footertextwidth%
+  \divide \half@title@width by 2%
+  \title@x = \elbow@x%
+  \advance \title@x by \the\trek@titlegap%
+  \title@y = \elbow@y%
+  \advance \title@y by -\the\@footertextheight%
   % Position of right cursor
-  \newdimen\cursor@x
-  \newdimen\cursor@y
-  \cursor@x = \paperwidth
-  \advance \cursor@x by -\the\trek@margin
-  \advance \cursor@x by -\the\trek@cursorwidth
-  \cursor@y = \title@y
+  \newdimen\cursor@x%
+  \newdimen\cursor@y%
+  \cursor@x = \paperwidth%
+  \advance \cursor@x by -\the\trek@margin%
+  \advance \cursor@x by -\the\trek@cursorwidth%
+  \cursor@y = \title@y%
   % Dimensions of central bar
-  \newdimen\bar@x
-  \newdimen\bar@y
-  \newdimen\bar@width
-  \bar@x = \title@x
-  \advance \bar@x by \the\@footertextwidth
-  \advance \bar@x by \the\trek@titlegap
-  \bar@y = \title@y
-  \bar@width = \cursor@x
-  \advance \bar@width by -\the\bar@x
-  \advance \bar@width by -\the\trek@titlegap
+  \newdimen\bar@x%
+  \newdimen\bar@y%
+  \newdimen\bar@width%
+  \bar@x = \title@x%
+  \advance \bar@x by \the\@footertextwidth%
+  \advance \bar@x by \the\trek@titlegap%
+  \bar@y = \title@y%
+  \bar@width = \cursor@x%
+  \advance \bar@width by -\the\bar@x%
+  \advance \bar@width by -\the\trek@titlegap%
   % Typeset the footline
   \leavevmode%
   \hbox{%
@@ -195,6 +198,53 @@
 
 \defbeamertemplate*{sidebar left}{trek theme}
 {%
+  % Measure height and width of the frametitle text
+  \newdimen\@titletextheight%
+  \setbox0=\hbox{\usebeamerfont{frametitle}8ML}%
+  \@titletextheight=\ht0%
+  % Compute height of frametitle region (including top margin)
+  \newdimen\frametitle@height%
+  \frametitle@height=\trek@elbow@height%
+  \advance \frametitle@height by \trek@margin%
+  % Height and width of footer title text
+  \newdimen\@footertextheight%
+  \setbox0=\hbox{\usebeamerfont{title in head/foot}ML8}%
+  \@footertextheight\ht0%
+  % Height of entire footer region
+  \newdimen\footline@height%
+  \footline@height=\the\trek@elbow@height%
+  \advance\footline@height by \the\trek@margin%
+  % Dimensions of sidebar
+  \newdimen\sidebar@x%
+  \newdimen\sidebar@y%
+  \newdimen\sidebar@width%
+  \newdimen\sidebar@height%
+  \newdimen\sidebar@totalwidth%
+  \newdimen\sidebar@totalheight%
+  \sidebar@x = \the\trek@margin%
+  \sidebar@y = \the\footline@height%
+  \advance \sidebar@y by \the\trek@titlegap%
+  \sidebar@width = \the\trek@sidebar@width%
+  \sidebar@height = \paperheight%
+  \advance \sidebar@height by -\the\frametitle@height%
+  \advance \sidebar@height by -\the\footline@height%
+  \advance \sidebar@height by -\the\trek@titlegap%
+  \advance \sidebar@height by -\the\trek@titlegap%
+  \sidebar@totalwidth = \the\trek@sidebar@width%
+  \advance \sidebar@totalwidth by \the\trek@margin%
+  \sidebar@totalheight = \paperheight%
+  % Typeset the sidebar
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\the\sidebar@totalwidth,ht=\paperheight,left]{sidebar}%
+      \begin{tikzpicture}
+        \useasboundingbox (0,0) rectangle (\the\sidebar@totalwidth,\the\sidebar@totalheight);
+        %\draw [draw=none,fill=red] (0,0) rectangle (\the\sidebar@totalwidth,\the\sidebar@totalheight);
+        % sidebar rectangle
+        \filldraw (\the\sidebar@x,\the\sidebar@y) rectangle ++(\the\sidebar@width,\the\sidebar@height);
+      \end{tikzpicture}%
+    \end{beamercolorbox}%
+  }%
 }
 
 \makeatother
