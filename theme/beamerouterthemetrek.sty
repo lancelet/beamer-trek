@@ -16,7 +16,7 @@
 \newdimen\trek@sidebar@width
 \newdimen\trek@left@footline@elbow@width
 \trek@margin=2mm
-\trek@titlegap=0.8mm
+\trek@titlegap=1.0mm
 \trek@elbow@height=10mm
 \trek@elbow@outer@radius=6mm
 \trek@elbow@inner@radius=3mm
@@ -67,6 +67,11 @@
   \advance \title@x by \the\cursor@x%
   \advance \title@x by -\the\trek@titlegap%
   \title@y=\cursor@y%
+  % Handle first page and other pages differently
+  \ifnum\c@framenumber=1%
+  % === TITLE SLIDE ===
+  \else%
+  % === NORMAL SLIDE ===
   % Origin and width of the "elbow"
   \newdimen\elbow@x%
   \newdimen\elbow@y%
@@ -86,29 +91,30 @@
     \begin{beamercolorbox}[wd=\paperwidth,ht=\the\frametitle@height,left]{frametitle}%
       \begin{tikzpicture}
         \useasboundingbox (0,0) rectangle (\paperwidth,\the\frametitle@height);
-        %\draw [draw=none,fill=red] (0,0) rectangle (\paperwidth,\the\frametitle@height);
+        % \draw [draw=none,fill=red] (0,0) rectangle (\paperwidth,\the\frametitle@height);
         % cursor at the right
         \draw (\the\cursor@x,\the\cursor@y) node [
-          trek cursor,
-          trek/cursor/width=\the\trek@cursorwidth,
-          trek/cursor/height=\the\@titletextheight
+        trek cursor,
+        trek/cursor/width=\the\trek@cursorwidth,
+        trek/cursor/height=\the\@titletextheight
         ]{};
         % title text
         \draw (\the\title@x,\the\title@y) node [anchor=base,inner sep=0]
-          {\usebeamerfont{frametitle}\insertframetitle};
+        {\usebeamerfont{frametitle}\insertframetitle};
         % elbow
         \draw (\the\elbow@x,\the\elbow@y) node [
-          trek elbow,
-          trek/elbow/bar height=\the\@titletextheight,
-          trek/elbow/height=\the\trek@elbow@height,
-          trek/elbow/sidebar width=\the\trek@sidebar@width,
-          trek/elbow/outer radius=\the\trek@elbow@outer@radius,
-          trek/elbow/inner radius=\the\trek@elbow@inner@radius,
-          trek/elbow/width=\the\elbow@width
+        trek elbow,
+        trek/elbow/bar height=\the\@titletextheight,
+        trek/elbow/height=\the\trek@elbow@height,
+        trek/elbow/sidebar width=\the\trek@sidebar@width,
+        trek/elbow/outer radius=\the\trek@elbow@outer@radius,
+        trek/elbow/inner radius=\the\trek@elbow@inner@radius,
+        trek/elbow/width=\the\elbow@width
         ]{};
       \end{tikzpicture}%
     \end{beamercolorbox}%
   }%
+  \fi%
 }
 
 \defbeamertemplate*{footline}{trek theme}
@@ -162,6 +168,11 @@
   \bar@width = \cursor@x%
   \advance \bar@width by -\the\bar@x%
   \advance \bar@width by -\the\trek@titlegap%
+  % Handle title slide differently
+  \ifnum\c@framenumber=1%
+  % === TITLE SLIDE ===
+  \else%
+  % === NORMAL SLIDE ===
   % Typeset the footline
   \leavevmode%
   \hbox{%
@@ -194,6 +205,7 @@
       \end{tikzpicture}%
     \end{beamercolorbox}%
   }%
+  \fi%
 }
 
 \defbeamertemplate*{sidebar left}{trek theme}
@@ -233,6 +245,11 @@
   \sidebar@totalwidth = \the\trek@sidebar@width%
   \advance \sidebar@totalwidth by \the\trek@margin%
   \sidebar@totalheight = \paperheight%
+  % Handle title slide differently
+  \ifnum\c@framenumber=1%
+  % === TITLE SLIDE ===
+  \else%
+  % === NORMAL SLIDE ===
   % Typeset the sidebar
   \leavevmode%
   \hbox{%
@@ -245,6 +262,7 @@
       \end{tikzpicture}%
     \end{beamercolorbox}%
   }%
+  \fi%
 }
 
 \makeatother

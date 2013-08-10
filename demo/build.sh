@@ -1,2 +1,2 @@
 #!/bin/bash
-TEXINPUTS=$TEXINPUTS:../theme pdflatex trek-demo.tex
+TEXINPUTS=$TEXINPUTS:../theme lualatex trek-demo.tex

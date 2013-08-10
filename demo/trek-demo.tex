@@ -5,14 +5,40 @@
 
 \begin{document}
 
-\title{MY PRESENTATION}
+\title{ABOUT THE TREK THEME}
+\author{JONATHAN MERRITT}
+\institute{THE INSTITUTE GOES HERE}
+\subtitle{THE SUBTITLE GOES HERE}
+\date{2013}
+\titlegraphic{%
+  \begin{tikzpicture}
+    \begin{scope}[line width=0,fill=trek@lightblue,draw=trek@lightblue]\import{./}{logo.tex}\end{scope}
+  \end{tikzpicture}%
+}
 
 \begin{frame}
-  \frametitle{DATA'S FELINE COMPANION}
-  Some text.
-  \begin{center}
-    \import{./}{logo.tex}
-  \end{center}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{INSPIRATION}
+  The Trek theme is inspired by the LCARS interface, originally designed by Michael Okuda.
+\end{frame}
+
+\begin{frame}
+  \frametitle{BASIC IDEA}
+  The basic idea is that the LaTeX typesetting engine, heavily assisted by the TikZ drawing library,
+  will format the title graphics for each slide automatically.
+\end{frame}
+
+\begin{frame}
+  \frametitle{REQUIREMENTS}
+  The Trek theme requires:
+  \begin{itemize}
+    \item XeLaTeX or LuaLaTeX (for font support)
+    \item the Beamer document class
+    \item TikZ drawing library
+  \end{itemize}
 \end{frame}
 
 \end{document}
