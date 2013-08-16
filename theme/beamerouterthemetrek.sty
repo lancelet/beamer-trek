@@ -26,13 +26,15 @@
 
 % Derived dimensions
 \newdimen\trek@full@sidebar@width
+\newdimen\trek@margin@right
 \trek@full@sidebar@width=\trek@sidebar@width
 \advance \trek@full@sidebar@width by \trek@margin
-%\advance \trek@full@sidebar@width by \trek@margin
+\trek@margin@right=\trek@margin
+\advance \trek@margin@right by \trek@margin
 
 \setbeamersize{sidebar width left=\the\trek@full@sidebar@width}
 \setbeamersize{text margin left=\the\trek@margin}
-\setbeamersize{text margin right=\the\trek@margin}
+\setbeamersize{text margin right=\the\trek@margin@right}
 
 \defbeamertemplate*{headline}{trek theme}{}
 

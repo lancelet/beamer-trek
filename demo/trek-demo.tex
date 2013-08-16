@@ -41,4 +41,38 @@
   \end{itemize}
 \end{frame}
 
+% TODO: Is there a better solution for removing the sidebar gap on plain slides?
+\newdimen\sidebaradj\makeatletter\sidebaradj=-\the\trek@sidebar@width\makeatother
+\begin{frame}[plain]
+  \advance\textwidth\sidebaradj\hsize\textwidth
+  \begin{center}
+    The following slides contain tests.
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{ITEMIZE AND ENUMERATE LEVELS}
+  The three levels of the itemize environment:
+  \begin{itemize}
+  \item Level 1
+    \begin{itemize}
+    \item Level 2
+      \begin{itemize}
+      \item Level 3
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+  \par
+  The three levels of the enumerate environment:
+  \begin{enumerate}
+  \item Level 1
+    \begin{enumerate}
+    \item Level 2
+      \begin{enumerate}
+      \item Level 3
+      \end{enumerate}
+    \end{enumerate}
+  \end{enumerate}
+\end{frame}
+
 \end{document}
