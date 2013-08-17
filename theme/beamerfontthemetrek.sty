@@ -1,5 +1,6 @@
 \RequirePackage{fontspec}
 
+\def\familydefault{\sfdefault}
 \def\trek@font{\fontspec{Antonio-Bold.ttf}}
 
 \setbeamerfont{frametitle}{
@@ -29,4 +30,18 @@
 \setbeamerfont{date}{
   family=\trek@font,
   size=\fontsize{10}{10}
+}
+\setbeamerfont{enumerate item}{
+  family=\trek@font,
+  size=\fontsize{6}{6}
+}
+\setbeamerfont{enumerate subitem}{
+  parent=enumerate item
+}
+\setbeamerfont{enumerate subsubitem}{
+  parent=enumerate item
+}
+\setbeamerfont{itemize/enumerate body}{
+  family=\sffamily,
+  size=\normalsize
 }

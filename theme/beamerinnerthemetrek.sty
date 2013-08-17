@@ -1,3 +1,5 @@
+\makeatletter
+
 \def\largecircle{%
   \tikz[baseline]{
     \fill (0,0.75ex) circle (0.75ex);
@@ -9,6 +11,95 @@
 \defbeamertemplate*{itemize subitem}{trek}{\largecircle}
 
 \defbeamertemplate*{itemize subsubitem}{trek}{\largecircle}
+
+\defbeamertemplate*{itemize/enumerate body begin}{trek}{%
+  \renewcommand{\theenumi}{\ifnum\value{enumi}<10 0\fi\arabic{enumi}}%
+  \renewcommand{\theenumii}{\ifnum\value{enumii}<10 0\fi\arabic{enumii}}%
+  \renewcommand{\theenumiii}{\ifnum\value{enumiii}<10 0\fi\arabic{enumiii}}%
+  \setlength\labelsep{\the\trek@titlegap}%
+  %\setlength\itemsep{0pt}%  TODO: arrange item separation nicely
+}
+
+\defbeamertemplate*{enumerate item}{trek}{%
+  % height of "cursor button"
+  \newdimen\cursor@height%
+  \setbox0=\hbox{\usebeamerfont{itemize/enumerate body}ML8}%
+  \cursor@height=\ht0%
+  \advance\cursor@height by 0.6ex%
+  % draw the enumerate item
+  \tikz[baseline]{
+    \draw (0,-0.3ex) node [
+    xscale=-1,
+    trek cursor,
+    trek/cursor/width=\the\trek@cursorwidth,
+    trek/cursor/height=\the\cursor@height
+    ] {};
+    \draw (-0.3ex,0) node [anchor=south east,inner sep=0,line width=0] {%
+      \color{black}\insertenumlabel%
+    };
+     \filldraw (\the\trek@buttongap,-0.3ex) rectangle ++(\the\trek@titlegap,\the\cursor@height);
+  }%
+}
+
+\defbeamertemplate*{enumerate subitem}{trek}{%
+  % height of "cursor button"
+  \newdimen\cursor@height%
+  \setbox0=\hbox{\usebeamerfont{itemize/enumerate subbody}ML8}%
+  \cursor@height=\ht0%
+  \advance\cursor@height by 0.6ex%
+  % width of "00"
+  \newdimen\prev@width%
+  \setbox0=\hbox{00}%
+  \prev@width=\wd0%
+  % width of cursor
+  \newdimen\cursor@width%
+  \cursor@width=\the\trek@cursorwidth%
+  \advance\cursor@width by \prev@width%
+  % draw the enumerate subitem
+  \tikz[baseline]{
+    \draw (0,-0.3ex) node [
+    xscale=-1,
+    trek cursor,
+    trek/cursor/width=\the\cursor@width,
+    trek/cursor/height=\the\cursor@height
+    ]{};
+    \draw (-0.3ex,0) node [anchor=south east,inner sep=0,line width=0] {%
+      \color{black}\insertenumlabel-\insertsubenumlabel%
+    };
+    \filldraw (\the\trek@buttongap,-0.3ex) rectangle ++(\the\trek@titlegap,\the\cursor@height);
+  }%
+}
+
+\defbeamertemplate*{enumerate subsubitem}{trek}%
+{%
+  % height of "cursor button"
+  \newdimen\cursor@height%
+  \setbox0=\hbox{\usebeamerfont{itemize/enumerate subsubbody}ML8}%
+  \cursor@height=\ht0%
+  \advance\cursor@height by 0.6ex%
+  % width of "00"
+  \newdimen\prev@width%
+  \setbox0=\hbox{00}%
+  \prev@width=\wd0%
+  % width of cursor
+  \newdimen\cursor@width%
+  \cursor@width=\the\trek@cursorwidth%
+  \advance\cursor@width by \prev@width%
+  \advance\cursor@width by \prev@width%
+  % draw the enumerate subsubitem
+  \tikz[baseline]{
+    \draw (0,-0.3ex) node [
+    xscale=-1,
+    trek cursor,
+    trek/cursor/width=\the\cursor@width,
+    trek/cursor/height=\the\cursor@height
+    ]{};
+    \draw (-0.3ex,0) node [anchor=south east,inner sep=0,line width=0] {%
+      \color{black}\insertenumlabel-\insertsubenumlabel-\insertsubsubenumlabel%
+    };
+    \filldraw (\the\trek@buttongap,-0.3ex) rectangle ++(\the\trek@titlegap,\the\cursor@height);
+  }%
+}
 
 \defbeamertemplate*{title page}{trek}{%
   % Measure size of subtitle, to go in the top right corner
@@ -161,3 +252,5 @@
     \end{beamercolorbox}%
   }%
 }%
+
+\makeatother
