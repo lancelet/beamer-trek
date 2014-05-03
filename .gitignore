@@ -4,3 +4,6 @@
 *.out
 *.snm
 *.toc
+pygments-style/build
+pygments-style/dist
+*.egg-info
