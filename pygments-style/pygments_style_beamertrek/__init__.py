@@ -29,5 +29,5 @@ class BeamerTrekStyle(Style):
     styles = {
         Comment:         'italic ' + trek_lightpurple,
         Keyword:         'bold '   + trek_lightorange,
-        Literal:         trek_lightyellow
+        Literal:         trek_lightblue
     }
